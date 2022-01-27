@@ -1,0 +1,136 @@
+\ProvidesPackage{musixnfss}
+
+\newcommand\musixfamily{\fontfamily{musix}\selectfont}
+\newcommand\usemusixfont{\usefont{U}{musix}{m}{n}}
+\newcommand\musixraise[2]{%
+  \begingroup
+  \def\musix@raisebox{\raisebox{#1}}%
+  #2%
+  \endgroup
+}
+\newcommand\nomusixraise{%
+  \let\musix@raisebox\@firstofone
+}
+\nomusixraise
+\newcommand\musixsymbol[3]{%
+  \begingroup
+  \usemusixfont\selectfont
+  \musixloadInterligne
+  \musix@load@wn@width
+  \musix@raisebox{%
+    #1%
+    \char#3\relax%
+    #2%
+  }
+  \endgroup
+}
+\newcommand\declaremusixsymbol[4]{%
+  \newcommand{#1}{\musixsymbol{#2}{#3}{#4}}%
+}
+% \nq@width is essentially \elemskip
+% as musicnorfont is the default font size for musixfont
+% And differences occur only when the note head size is changed
+%
+% \qn@width = \elemskip
+% \wn@width = 1.25\qn@width
+% \Internote = .5\Interligne
+% \big@spc = .6\Interligne
+% \txt@ff  = .5\qn@width
+% \newdimen\lthick \lthick=.4pt
+% \def\hlthick{\h@lf\lthick}
+% \qd@skip = \qn@width - \hlthick
+
+\newdimen\musixelemskip
+\newdimen\musixInterligne
+\let\musix@qn@width\musixelemskip
+\newdimen\musix@wn@width
+\newcommand\musixloadelemskip{\musixelemskip\fontdimen6\font}
+\newcommand\musixloadInterligne{\musixInterligne\fontdimen5\font}
+\newcommand\musix@load@wn@width{%
+  \musixloadelemskip
+  \musix@wn@width1.25\musixelemskip
+}
+\newcommand\textmusix[1]{%
+  \begingroup
+  \musixraise{0.5ex}%
+  \@defaultunits\@tempdimb\f@size pt\relax\@nnil%
+  \@tempdima=1.3333333\@tempdimb\relax
+  \edef\f@size{\strip@pt\@tempdima}%
+  \csname musix#1\endcsname
+  \endgroup
+}
+
+
+\declaremusixsymbol{\musixfl}            {}{}{50}
+\declaremusixsymbol{\musixdfl}           {}{}{51}
+\declaremusixsymbol{\musixsh}            {}{}{52}
+\declaremusixsymbol{\musixdsh}           {}{}{53}
+\declaremusixsymbol{\musixbigfl}            {}{}{50}
+\declaremusixsymbol{\musixbigdfl}           {}{}{51}
+\declaremusixsymbol{\musixbigsh}            {}{}{52}
+\declaremusixsymbol{\musixbigdsh}            {}{}{53}
+%
+\declaremusixsymbol{\musixzrestsixtyfour}{}{}{66}
+\declaremusixsymbol{\musixrestsixtyfour}        {%
+  \musix@load@wn@width
+  \kern0.15\musix@wn@width\relax
+}{\kern.85\musix@wn@width\relax}{66}
+%
+\declaremusixsymbol{\musixzbackturn}     {}{}{67}
+\declaremusixsymbol{\musixzturn}         {}{}{68}
+%
+\declaremusixsymbol{\musixzduevolte}     {}{}{78}
+\declaremusixsymbol{\musixzcaesura}      {}{}{79}
+%
+\declaremusixsymbol{\musixzcoda}         {}{}{85}
+\declaremusixsymbol{\musixzsegno}        {}{}{86}
+\declaremusixsymbol{\musixzshake}        {}{}{87}
+\declaremusixsymbol{\musixzShake}        {}{}{88}
+\declaremusixsymbol{\musixShake}        {%
+  \musix@load@wn@width
+  \kern0.5\musix@wn@width\relax
+}{\kern1.5\musix@wn@width\relax}{88}
+\declaremusixsymbol{\musixzmordent}      {}{}{89}
+%
+\declaremusixsymbol{\musixzCoda}         {}{}{105}
+\declaremusixsymbol{\musixzShakel}       {}{}{106}
+\declaremusixsymbol{\musixzShakenw}      {}{}{107}
+\declaremusixsymbol{\musixzShakesw}      {}{}{108}
+\declaremusixsymbol{\musixzShakene}      {}{}{109}
+\declaremusixsymbol{\musixzSegno}        {}{}{110}
+\declaremusixsymbol{\musixzMordent}      {}{}{119}
+\declaremusixsymbol{\musixzdoublethumb}  {}{}{121}
+
+\declaremusixsymbol{\musixzmaxima}       {}{}{36}
+\declaremusixsymbol{\musixzlonga}        {}{}{39}
+\declaremusixsymbol{\musixzbreve}        {}{}{32}
+\declaremusixsymbol{\musixzwq}           {}{}{56}
+\declaremusixsymbol{\musixzwqq}          {}{}{127}
+
+\declaremusixsymbol{\musixmaxima}{%
+  \musix@load@wn@width
+%  \kern\musix@wn@width\relax
+}{\kern2\musix@wn@width\relax}{36}
+\declaremusixsymbol{\musixlonga}        {%
+  \musix@load@wn@width
+  %\kern0.5\musix@wn@width\relax
+}{\kern\musix@wn@width\relax}{39}
+\declaremusixsymbol{\musixbreve}        {%
+  \musix@load@wn@width
+  %\kern0.5\musix@wn@width\relax
+}{\kern\musix@wn@width\relax}{32}
+\declaremusixsymbol{\musixwq}           {%
+  \musix@load@wn@width
+  \kern0.1\musix@wn@width\relax
+}{\kern1.1\musix@wn@width\relax}{56}
+\declaremusixsymbol{\musixwqq}          {%
+  \musix@load@wn@width
+  \kern0.3\musix@wn@width\relax
+}{\kern1.3\musix@wn@width\relax}{127}
+
+
+\newcommand\musixmakenotewidth[1]{
+%  \set@mathsymbol\symmusix\musixzbackturn f4
+%  \global\mathchardef#2"\mathchar@type#3\hexnumber@#1#4\relax
+%  \global\mathchardef\musixzbackturn"\mathchar@type\hexnumber@\symmusix f4\relax
+}

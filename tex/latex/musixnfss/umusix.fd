@@ -1,0 +1,51 @@
+%%
+%% This is file `umsa.fd',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% amsfonts.dtx  (with options: `msa')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright 2001, 2009, 2013 American Mathematical Society.
+%% 
+%% American Mathematical Society
+%% Technical Support
+%% Publications Technical Group
+%% 201 Charles Street
+%% Providence, RI 02904
+%% USA
+%% tel: (401) 455-4080
+%%      (800) 321-4267 (USA and Canada only)
+%% fax: (401) 331-3842
+%% email: tech-support@ams.org
+%% 
+%% Unlimited copying and redistribution of this file are permitted as
+%% long as this file is not modified.  Modifications, and distribution
+%% of modified versions, are permitted, but only if the resulting file
+%% is renamed.
+%% 
+\ProvidesFile{umusix.fd}    [2013/01/14 v3.01 AMS symbols A]
+\DeclareFontFamily{U}{musix}{}
+\DeclareFontShape{U}{musix}{m}{n}{%
+     <-11>musix11%
+    <12-14.5>musix13%
+    <14.5-18>musix16%
+    <18-22>musix20%
+    <22-26.5>musix24%
+    <26.5->musix29%
+}{}
+\endinput
+%%
+%% End of file `umsa.fd'.
+
+
+% musix11
+% musix13
+% musix16
+% musix20
+% musix24
+% musix29
+% musixsps
+% musixspx
